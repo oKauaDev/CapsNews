@@ -1,0 +1,23 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800;900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: "Rubik", sans-serif;
+  background: #fff;
+}
+
+.anime-left {
+  opacity: 0;
+  transform: translate3d(-100px, 0px, 0px);
+  animation: animeLeft 0.4s forwards;
+}
+
+@keyframes animeLeft {
+  to {
+    opacity: initial;
+    transform: initial;
+  }
+}
