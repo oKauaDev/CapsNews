@@ -23,7 +23,8 @@ const useAuth = (setUser: setUserProps) => {
         ) {
           setUser(data.data);
         }
-      });
+      })
+      .catch(() => {});
   }
 };
 
