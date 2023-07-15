@@ -13,7 +13,14 @@ export function user(): UserApiTypes {
     password: string,
     password_confirmation: string
   ) {
-    return fetch("").then((r) => r.json());
+    return (
+      await axiosInstance.post("register", {
+        name,
+        email,
+        password,
+        password_confirmation,
+      })
+    ).data;
   }
 
   // Logar com o usuário
