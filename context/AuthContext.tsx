@@ -13,10 +13,10 @@ export const AuthContextProvider = ({
   children: React.ReactNode;
 }) => {
   const [user, setUser] = React.useState<UserTokenProps>();
-  const refUseAuth = React.useRef(useAuth);
+  const refUseAuth = React.useRef(useAuth());
 
   React.useEffect(() => {
-    refUseAuth.current(setUser);
+    refUseAuth.current.Auth(setUser);
   }, []);
 
   return (

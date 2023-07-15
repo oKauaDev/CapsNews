@@ -1,7 +1,7 @@
 import { AuthContextProvider } from "@/context/AuthContext";
 import "./globals.css";
 import type { Metadata } from "next";
-import { Suspense } from "react";
+import PrivateRouter from "@/components/PrivateRouter/PrivateRouter";
 
 export const metadata: Metadata = {
   title: "CapsNews",
@@ -16,7 +16,9 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body>
-        <AuthContextProvider>{children}</AuthContextProvider>
+        <AuthContextProvider>
+          <PrivateRouter>{children}</PrivateRouter>
+        </AuthContextProvider>
       </body>
     </html>
   );
