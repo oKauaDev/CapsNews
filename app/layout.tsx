@@ -1,6 +1,7 @@
 import { AuthContextProvider } from "@/context/AuthContext";
 import "./globals.css";
 import type { Metadata } from "next";
+import { Suspense } from "react";
 
 export const metadata: Metadata = {
   title: "CapsNews",

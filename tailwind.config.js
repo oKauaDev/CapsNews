@@ -12,6 +12,9 @@ module.exports = {
         vw304: "23.75vw",
       },
       colors: {
+        transparence: {
+          500: "rgba(0, 0, 0, 0.5)",
+        },
         primary: {
           100: "#B3DBFC",
           200: "#5FB0F5",
