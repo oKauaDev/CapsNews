@@ -1,4 +1,9 @@
-import { UserApiTypes } from "@/types/Api";
+import {
+  NewApiTypes,
+  NewsGetAllFunction,
+  NewsGetAllPromisse,
+  UserApiTypes,
+} from "@/types/Api";
 import axios from "axios";
 
 export function user(): UserApiTypes {
@@ -54,5 +59,19 @@ export function user(): UserApiTypes {
     login,
     get,
     edit,
+  };
+}
+
+export function news(): NewApiTypes {
+  const axiosInstance = axios.create({
+    baseURL: "http://127.0.0.1:8000/news/",
+  });
+
+  async function getAll() {
+    return (await axiosInstance.get("all")).data;
+  }
+
+  return {
+    getAll,
   };
 }

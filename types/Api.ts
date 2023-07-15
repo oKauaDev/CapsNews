@@ -1,3 +1,4 @@
+import { New } from "./News";
 import { UserTokenProps } from "./User";
 
 export interface PromisseApiError<T = string> {
@@ -62,3 +63,16 @@ export type UserEditFunction = (
   token: string,
   name: string
 ) => Promise<UserEditPromise>;
+
+// News
+export interface NewApiTypes {
+  getAll: NewsGetAllFunction;
+}
+
+// NewGetAll
+export interface NewsGetAllPromisse {
+  status: number;
+  data: New[];
+}
+
+export type NewsGetAllFunction = () => Promise<NewsGetAllPromisse>;
