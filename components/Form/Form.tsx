@@ -4,17 +4,36 @@ import { FormInputValuesProps, FormProps } from "@/types/components/Form";
 import React from "react";
 
 type ChangeEvent = React.ChangeEvent<HTMLInputElement>;
-const formInputValues: FormInputValuesProps = {};
 
 const Form: React.FC<FormProps> = ({ inputs, button, onSend }) => {
+  const [formInputValues, setFormInputValues] =
+    React.useState<FormInputValuesProps>({});
+
   const [errosInputs, setErrosInputs] = React.useState<string[]>([]);
+
+  // Verificar se os inputs possuim já um valor.
+  React.useEffect(() => {
+    inputs.forEach((input, i) => {
+      if (input.valueinput) {
+        setFormInputValues((e) => {
+          return { ...e, [i]: `${input.valueinput}` };
+        });
+      }
+    });
+  }, [inputs]);
 
   // Evento de todos os inputs para ataulizar na variavel
   function onInputChange(i: number, event: ChangeEvent) {
     if (errosInputs) {
       setErrosInputs([]);
     }
-    formInputValues[i] = event.currentTarget.value;
+
+    setFormInputValues((e) => {
+      return {
+        ...e,
+        [i]: `${event.currentTarget?.value ?? event.target.value}`,
+      };
+    });
   }
 
   function getInputErros() {
@@ -61,7 +80,10 @@ const Form: React.FC<FormProps> = ({ inputs, button, onSend }) => {
               </p>
               <input
                 {...input}
-                className={`block mt-3 w-full bg-secundary-200 py-3 px-4 outline-none box-border text-secundary-1000 placeholder:text-secundary-700 ${className}`}
+                value={formInputValues[i] ?? ""}
+                className={`block mt-3 w-full bg-secundary-200 py-3 px-4 outline-none box-border text-secundary-1000 placeholder:text-secundary-700 ${
+                  className ?? ""
+                }`}
                 onChange={(event) => {
                   // Executar o callback do input enviado no formulário
                   if (onChange) onChange(event);

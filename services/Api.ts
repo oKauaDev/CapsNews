@@ -51,7 +51,13 @@ export function user(): UserApiTypes {
 
   // Editar o usuário
   async function edit(token: string, name: string) {
-    return fetch("").then((r) => r.json());
+    return (
+      await axiosInstance.post(
+        "edit",
+        { name },
+        { headers: { Authorization: `Bearer ${token}` } }
+      )
+    ).data;
   }
 
   return {

@@ -4,6 +4,7 @@ interface InputJsonProps extends React.InputHTMLAttributes<HTMLInputElement> {
   placeholder?: string;
   label?: string;
   errormessage?: string;
+  valueinput?: string;
 }
 
 interface ButtonJsonProps

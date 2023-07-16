@@ -22,6 +22,12 @@ const PrivateRouter: React.FC<PrivateRouterProps> = ({ children }) => {
       return;
     }
 
+    // Se o usuário ainda não foi carregado, irá enviar o children padrão.
+    if (user.loading === false) {
+      setReturnComponent(<>{children}</>);
+      return;
+    }
+
     // Verifica se requer login
     if (route.require_login) {
       // verifica se o usuário é logado.
@@ -38,7 +44,7 @@ const PrivateRouter: React.FC<PrivateRouterProps> = ({ children }) => {
         setReturnComponent(<>{children}</>);
       }
     }
-  }, [children, route, router, user.email]);
+  }, [children, route, router, user.email, user.loading]);
 
   // Se a rota não estiver registarda, vai retornar ela.
 

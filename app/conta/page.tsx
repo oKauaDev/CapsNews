@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar/Navbar";
 import Image from "next/image";
 import Link from "next/link";
+import FormConta from "./FormConta";
 
 export default function Conta() {
   return (
@@ -20,6 +21,7 @@ export default function Conta() {
             />
           </Link>
         </div>
+        <FormConta />
       </section>
     </>
   );
