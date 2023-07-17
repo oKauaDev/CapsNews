@@ -2,6 +2,7 @@ import { AuthContextProvider } from "@/context/AuthContext";
 import "./globals.css";
 import type { Metadata } from "next";
 import PrivateRouter from "@/components/PrivateRouter/PrivateRouter";
+import { FilterContextProvider } from "@/context/FilterContext";
 
 export const metadata: Metadata = {
   title: "CapsNews",
@@ -17,7 +18,9 @@ export default function RootLayout({
     <html lang="pt-BR">
       <body>
         <AuthContextProvider>
-          <PrivateRouter>{children}</PrivateRouter>
+          <FilterContextProvider>
+            <PrivateRouter>{children}</PrivateRouter>
+          </FilterContextProvider>
         </AuthContextProvider>
       </body>
     </html>

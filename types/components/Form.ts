@@ -5,6 +5,10 @@ interface InputJsonProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string;
   errormessage?: string;
   valueinput?: string;
+  defaultstyles?: "true" | "false";
+  labelClassName?: string;
+  key?: string;
+  containerclassname?: string;
 }
 
 interface ButtonJsonProps
@@ -25,5 +29,5 @@ export interface FormProps {
 }
 
 export interface FormInputValuesProps {
-  [key: number]: string | number;
+  [key: string]: string | number;
 }

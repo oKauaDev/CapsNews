@@ -1,18 +1,29 @@
 import typeColors from "@/constants/typeColors";
 import { news } from "@/services/Api";
+import { filters } from "@/types/Context";
+import { New } from "@/types/News";
 import Link from "next/link";
 import React from "react";
 
-const News = async () => {
-  const newsList = await news().getAll();
-  const { data } = newsList;
+const News = ({ type, p, m }: { type: filters; p: number; m: number }) => {
+  const [data, setData] = React.useState<New[]>([]);
+
+  React.useEffect(() => {
+    news()
+      .getAll(type, p, m)
+      .then((data) => {
+        if (+data.status == 200) {
+          setData(data.data);
+        }
+      });
+  }, [type, p, m]);
 
   function getColor(type: string) {
     return typeColors[type] ?? "#6F7780";
   }
 
   return (
-    <div className="mx-vw304 mt-24 flex flex-col gap-8 anime-left">
+    <div className="mx-vw304 mt-24 flex flex-col gap-8 anime-left tablet:mx-vw128">
       {data.map((myNew, i) => {
         return (
           <Link

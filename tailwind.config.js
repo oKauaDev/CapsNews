@@ -7,6 +7,13 @@ module.exports = {
   ],
   theme: {
     extend: {
+      gridColumn: {
+        1: "1",
+        2: "2",
+      },
+      gridRow: {
+        1: "1",
+      },
       spacing: {
         vw128: "10vw",
         vw304: "23.75vw",

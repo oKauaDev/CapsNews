@@ -4,11 +4,12 @@ import {
   NewsGetAllPromisse,
   UserApiTypes,
 } from "@/types/Api";
+import { filters } from "@/types/Context";
 import axios from "axios";
 
 export function user(): UserApiTypes {
   const axiosInstance = axios.create({
-    baseURL: "http://127.0.0.1:8000/user/",
+    baseURL: "http://192.168.0.111:8000/user/",
   });
 
   // Registrar o usuário
@@ -70,11 +71,11 @@ export function user(): UserApiTypes {
 
 export function news(): NewApiTypes {
   const axiosInstance = axios.create({
-    baseURL: "http://127.0.0.1:8000/news/",
+    baseURL: "http://192.168.0.111:8000/news/",
   });
 
-  async function getAll() {
-    return (await axiosInstance.get("all")).data;
+  async function getAll(type: filters, p: number, m: number) {
+    return (await axiosInstance.get(`all?type=${type}&p=${p}&m=${m}`)).data;
   }
 
   async function get(link: string) {
@@ -85,9 +86,26 @@ export function news(): NewApiTypes {
     return (await axiosInstance.get(`view/${link}`)).data;
   }
 
+  async function create(
+    user_email: string,
+    title: string,
+    content: string,
+    type: string
+  ) {
+    return (
+      await axiosInstance.post("create", {
+        user_email,
+        title,
+        content,
+        type,
+      })
+    ).data;
+  }
+
   return {
     getAll,
     get,
     view,
+    create,
   };
 }

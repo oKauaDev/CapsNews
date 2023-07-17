@@ -13,6 +13,10 @@ const Routes: Route = {
     redirect: "/login",
     require_login: true,
   },
+  create: {
+    redirect: "/login",
+    require_login: true,
+  },
 };
 
 export default Routes;

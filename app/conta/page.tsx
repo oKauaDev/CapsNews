@@ -12,7 +12,7 @@ export default function Conta() {
           <h1 className="text-40px font-medium leading-tight tracking-wider text-secundary-1000">
             Sua Conta
           </h1>
-          <Link className="p-3 bg-primary-300 rounded-sm" href="">
+          <Link className="p-3 bg-primary-300 rounded-sm" href="/conta/create">
             <Image
               src="/add.svg"
               width={18.67}

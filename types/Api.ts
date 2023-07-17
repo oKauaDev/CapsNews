@@ -1,3 +1,4 @@
+import { filters } from "./Context";
 import { New } from "./News";
 import { UserTokenProps } from "./User";
 
@@ -69,6 +70,7 @@ export interface NewApiTypes {
   getAll: NewsGetAllFunction;
   get: NewGetFunction;
   view: NewViewFunction;
+  create: NewCreateFunction;
 }
 
 // NewGetAll
@@ -77,7 +79,11 @@ export interface NewsGetAllPromisse {
   data: New[];
 }
 
-export type NewsGetAllFunction = () => Promise<NewsGetAllPromisse>;
+export type NewsGetAllFunction = (
+  type: filters,
+  p: number,
+  m: number
+) => Promise<NewsGetAllPromisse>;
 
 // GetMew
 export interface NewGetPromisse {
@@ -94,3 +100,16 @@ export interface NewViewPromisse {
 }
 
 export type NewViewFunction = (link: string) => Promise<NewViewPromisse>;
+
+// CreateNew
+export interface NewCreatePromisse {
+  status: number;
+  data: string;
+}
+
+export type NewCreateFunction = (
+  user_email: string,
+  title: string,
+  content: string,
+  type: string
+) => Promise<NewCreatePromisse>;
