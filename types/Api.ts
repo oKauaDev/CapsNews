@@ -67,6 +67,8 @@ export type UserEditFunction = (
 // News
 export interface NewApiTypes {
   getAll: NewsGetAllFunction;
+  get: NewGetFunction;
+  view: NewViewFunction;
 }
 
 // NewGetAll
@@ -76,3 +78,19 @@ export interface NewsGetAllPromisse {
 }
 
 export type NewsGetAllFunction = () => Promise<NewsGetAllPromisse>;
+
+// GetMew
+export interface NewGetPromisse {
+  status: number;
+  data: New;
+}
+
+export type NewGetFunction = (link: string) => Promise<NewGetPromisse>;
+
+// ViewNew
+export interface NewViewPromisse {
+  status: number;
+  data: string;
+}
+
+export type NewViewFunction = (link: string) => Promise<NewViewPromisse>;

@@ -18,7 +18,7 @@ const Nav = () => {
         </li>
       </ul>
       <Link
-        href={context.user?.name ? "conta" : "login"}
+        href={context.user?.name ? "/conta" : "/login"}
         className="block px-4 py-2 bg-primary-300 text-primary-500 rounded transition duration-300 hover:shadow-button hover:scale-[1.01] phone:px-2 phone:py-1 phone:text-14px"
       >
         {context.user?.name ? context.user.name : "ENTRAR"}

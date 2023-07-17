@@ -1,5 +1,6 @@
 import typeColors from "@/constants/typeColors";
 import { news } from "@/services/Api";
+import Link from "next/link";
 import React from "react";
 
 const News = async () => {
@@ -11,10 +12,11 @@ const News = async () => {
   }
 
   return (
-    <div className="mx-vw304 mt-24 flex flex-col gap-8">
+    <div className="mx-vw304 mt-24 flex flex-col gap-8 anime-left">
       {data.map((myNew, i) => {
         return (
-          <div
+          <Link
+            href={`/new/${myNew.link}`}
             key={myNew.id}
             className="grid grid-cols-[2px_1fr] gap-5 cursor-pointer"
           >
@@ -36,7 +38,7 @@ const News = async () => {
                 </p>
               </div>
             </div>
-          </div>
+          </Link>
         );
       })}
     </div>

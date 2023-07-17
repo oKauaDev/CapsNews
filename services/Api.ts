@@ -77,7 +77,17 @@ export function news(): NewApiTypes {
     return (await axiosInstance.get("all")).data;
   }
 
+  async function get(link: string) {
+    return (await axiosInstance.get(`get/${link}`)).data;
+  }
+
+  async function view(link: string) {
+    return (await axiosInstance.get(`view/${link}`)).data;
+  }
+
   return {
     getAll,
+    get,
+    view,
   };
 }
