@@ -9,6 +9,7 @@ const Navbar = () => {
       <Link href="/">
         <Image
           src="/logo-text.svg"
+          priority={true}
           alt="Logo do CapsNews"
           width={77}
           height={40}
